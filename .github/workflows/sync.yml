@@ -22,7 +22,6 @@ jobs:
               with:
                 fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-			# 记得替换下面的 邮箱、用户名、仓库名
             - name: Sync vercelcdn
               run: |
                 git config --global user.email "3197339958@qq.com"
