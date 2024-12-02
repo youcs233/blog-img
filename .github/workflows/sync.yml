@@ -25,12 +25,12 @@ jobs:
             - name: Sync vercelcdn
               run: |
                 git config --global user.email "319733958@qq.com"
-                git config --global user.name "yousc233"
+                git config --global user.name "youcs233"
                 git checkout vercelcdn
                 mkdir -p gh/youcs233
                 cd gh/youcs233
                 rm -rf blog-img
-                git clone https://github.com/yousc233/blog-img.git
+                git clone https://github.com/youcs233/blog-img.git
                 cd 仓库名
                 rm -rf .git                
       
