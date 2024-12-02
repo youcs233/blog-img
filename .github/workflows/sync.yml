@@ -30,7 +30,7 @@ jobs:
                 mkdir -p gh/youcs233
                 cd gh/youcs233
                 rm -rf blog-img
-                git clone https://${{ secrets.GH_TOKEN }}@github.com/youcs233/blog-img.git
+                git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/youcs233/blog-img.git
                 cd blog-img
                 rm -rf .git                
       
