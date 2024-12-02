@@ -30,8 +30,8 @@ jobs:
                 mkdir -p gh/youcs233
                 cd gh/youcs233
                 rm -rf blog-img
-                git clone https://github.com/youcs233/blog-img.git
-                cd 仓库名
+                git clone https://${{ secrets.BLOG_TOKEN }}@github.com/youcs233/blog-img.git
+                cd blog-img
                 rm -rf .git                
       
             - name: Commit changes
