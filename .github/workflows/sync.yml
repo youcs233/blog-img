@@ -1,0 +1,43 @@
+name: sync
+
+on:
+    push:
+      branches:
+      - master  # Set a branch to deploy
+    pull_request:
+      branches:
+      - master  # Set a branch to deploy
+    workflow_dispatch:
+    schedule:
+        # Runs everyday at 0:00 AM
+        - cron: "0 0 * * *"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        permissions: write-all
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+			# 记得替换下面的 邮箱、用户名、仓库名
+            - name: Sync vercelcdn
+              run: |
+                git config --global user.email "3197339958@qq.com"
+                git config --global user.name "youcs233"
+                git checkout vercelcdn
+                cd gh/youcs233
+                rm -rf blog-img
+                git clone https://github.com/youcs233/blog-img.git
+                cd blog-img
+                rm -rf .git                
+      
+            - name: Commit changes
+              uses: stefanzweifel/git-auto-commit-action@v5
+              with:
+                branch: vercelcdn
+                commit_message: ':arrow_up: sync vercelcdn img with master'
+                commit_author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
+                push_options: '--set-upstream'
